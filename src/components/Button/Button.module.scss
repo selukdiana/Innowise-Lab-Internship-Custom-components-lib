@@ -1,4 +1,6 @@
-@import '../../variables.scss';
+@use 'sass:map';
+@use 'sass:color';
+@use '../../variables' as vars;
 
 .button {
   border: none;
@@ -7,7 +9,7 @@
   font-weight: 500;
   text-transform: uppercase;
   line-height: 1.75;
-  border-radius: $border-radius;
+  border-radius: vars.$border-radius;
   min-width: 64px;
   transition:
     background-color 200ms,
@@ -17,7 +19,7 @@
 }
 .text {
   background: transparent;
-  color: map-get($palette, primary);
+  color: map.get(vars.$palette, primary);
 
   &:hover {
     background: rgba(25, 118, 210, 0.04);
@@ -25,18 +27,18 @@
 }
 
 .contained {
-  background: map-get($palette, primary);
-  color: map-get($palette, text);
+  background: map.get(vars.$palette, primary);
+  color: map.get(vars.$palette, text);
 
   &:hover {
-    background: darken(map-get($palette, primary), 7%);
+    background: color.adjust(map.get(vars.$palette, primary), $lightness: -7%);
   }
 }
 
 .outlined {
   background: transparent;
-  border: 1px solid map-get($palette, primary);
-  color: map-get($palette, primary);
+  border: 1px solid map.get(vars.$palette, primary);
+  color: map.get(vars.$palette, primary);
 
   &:hover {
     background: rgba(25, 118, 210, 0.04);
@@ -51,12 +53,12 @@
 }
 
 .small {
-  padding: map-get($spacing, small);
+  padding: map.get(vars.$spacing, small);
   font-size: 0.8125rem;
 }
 .medium {
-  padding: map-get($spacing, medium);
+  padding: map.get(vars.$spacing, medium);
 }
 .large {
-  padding: map-get($spacing, large);
+  padding: map.get(vars.$spacing, large);
 }

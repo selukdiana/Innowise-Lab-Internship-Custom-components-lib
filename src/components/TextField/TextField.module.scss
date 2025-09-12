@@ -1,0 +1,48 @@
+@use 'sass:map';
+@use 'sass:color';
+@use '../../variables' as vars; // optional
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: inherit;
+  width: fit-content;
+}
+
+.label {
+  margin-bottom: 4px;
+  font-size: 0.875rem;
+  color: map.get(vars.$palette, default);
+}
+
+.input {
+  font: inherit;
+  padding: 8px 12px;
+  border-radius: vars.$border-radius;
+  transition:
+    border-color 200ms,
+    background 200ms;
+  color: #000;
+  border: 1px solid map.get(vars.$palette, default);
+  background: #fff;
+  &:focus {
+    border-color: map.get(vars.$palette, primary);
+  }
+}
+
+.error {
+  border-color: map.get(vars.$palette, error);
+  &:focus {
+    border-color: map.get(vars.$palette, error);
+  }
+}
+
+.helperText {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: map.get(vars.$palette, default);
+
+  &.error {
+    color: map.get(vars.$palette, error);
+  }
+}

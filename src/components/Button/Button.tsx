@@ -11,13 +11,14 @@ export const Button: FC<ButtonProps> = ({
   children,
   variant = 'contained',
   size = 'medium',
+  className,
   ...rest
 }) => {
-  console.log(styles);
   const buttonClasses = classnames(
     styles.button,
     styles[variant],
     styles[size],
+    className,
   );
 
   return (

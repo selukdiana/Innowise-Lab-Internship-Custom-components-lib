@@ -9,40 +9,71 @@
   width: fit-content;
 }
 
+.inputContainer {
+  position: relative;
+}
+
 .label {
-  margin-bottom: 4px;
-  font-size: 0.875rem;
-  color: map.get(vars.$palette, default);
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  background: #fff;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: all 200ms;
+  transform-origin: top left;
+  color: map.get(vars.$palette, text-secondary);
+  &Floated {
+    top: 0;
+    transform: scale(0.75) translateY(-50%);
+    font-size: 1rem;
+    line-height: 1.4375em;
+    padding: 0 3px;
+    color: map.get(vars.$palette, primary);
+  }
+
+  &Error {
+    color: map.get(vars.$palette, error);
+  }
 }
 
 .input {
   font: inherit;
-  padding: 8px 12px;
+  padding: 16.5px 14px;
   border-radius: vars.$border-radius;
   transition:
     border-color 200ms,
     background 200ms;
   color: #000;
-  border: 1px solid map.get(vars.$palette, default);
+  outline: none;
   background: #fff;
-  &:focus {
-    border-color: map.get(vars.$palette, primary);
+  &Default {
+    border: 1px solid map.get(vars.$palette, default);
+    &:hover {
+      border-color: map.get(vars.$palette, secondary);
+    }
+    &:focus {
+      border-color: map.get(vars.$palette, primary);
+      border-width: 2px;
+    }
   }
-}
-
-.error {
-  border-color: map.get(vars.$palette, error);
-  &:focus {
-    border-color: map.get(vars.$palette, error);
+  &Error {
+    border: 1px solid map.get(vars.$palette, error);
+    &:focus {
+      border-width: 2px;
+    }
   }
 }
 
 .helperText {
-  margin-top: 4px;
+  margin-top: 3px;
   font-size: 0.75rem;
-  color: map.get(vars.$palette, default);
+  color: map.get(vars.$palette, text-secondary);
+  padding-left: 14px;
+  text-align: left;
 
-  &.error {
+  &Error {
     color: map.get(vars.$palette, error);
   }
 }

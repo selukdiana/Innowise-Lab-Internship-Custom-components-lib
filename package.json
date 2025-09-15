@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "webpack",
     "lint": "eslint .",
@@ -16,7 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.35.0",
-    "@types/react": "^19.1.12",
+    "@types/react": "^18.3.12",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
     "classnames": "^2.5.1",
@@ -29,8 +31,6 @@
     "husky": "^9.1.7",
     "jiti": "^2.5.1",
     "prettier": "^3.6.2",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
     "sass": "^1.92.1",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
@@ -39,10 +39,6 @@
     "typescript-eslint": "^8.43.0",
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1"
-  },
-  "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
   },
   "files": [
     "dist"

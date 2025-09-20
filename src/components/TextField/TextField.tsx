@@ -13,8 +13,9 @@ export const TextField: React.FC<TextFieldProps> = ({
   label,
   helperText,
   value,
+  onChange,
   className,
-  ...inputProps
+  ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState(value);
@@ -27,24 +28,21 @@ export const TextField: React.FC<TextFieldProps> = ({
     setIsFocused(false);
   };
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setInputValue(e.target.value);
+    onChange?.(e);
   };
 
   const rootClasses = classNames(styles.root, className);
   const labelClasses = classNames(
     styles.label,
-    (hasValue || isFocused) && styles.labelFloated,
-    error && styles.labelError,
+    (hasValue || isFocused) && styles.floated,
+    error && styles.error,
   );
   const inputClasses = classNames(
     styles.input,
-    error ? styles.inputError : styles.inputDefault,
+    error ? styles.error : styles.default,
   );
-  const helperClasses = classNames(
-    styles.helperText,
-    error && styles.helperTextError,
-  );
+  const helperClasses = classNames(styles.helperText, error && styles.error);
 
   return (
     <div className={rootClasses}>
@@ -56,7 +54,7 @@ export const TextField: React.FC<TextFieldProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleInputChange}
-          {...inputProps}
+          {...rest}
         />
       </div>
       {helperText && <p className={helperClasses}>{helperText}</p>}

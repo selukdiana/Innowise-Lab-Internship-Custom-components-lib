@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes, FC } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './Button.module.scss';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,7 +14,7 @@ export const Button: FC<ButtonProps> = ({
   className,
   ...rest
 }) => {
-  const buttonClasses = classnames(
+  const buttonClasses = classNames(
     styles.button,
     styles[variant],
     styles[size],

@@ -18,13 +18,13 @@
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  background: #fff;
+  background: map.get(vars.$palette, background);
   font-size: 1rem;
   pointer-events: none;
   transition: all 200ms;
   transform-origin: top left;
   color: map.get(vars.$palette, text-secondary);
-  &Floated {
+  &.floated {
     top: 0;
     transform: scale(0.75) translateY(-50%);
     font-size: 1rem;
@@ -33,7 +33,7 @@
     color: map.get(vars.$palette, primary);
   }
 
-  &Error {
+  &.error {
     color: map.get(vars.$palette, error);
   }
 }
@@ -45,20 +45,20 @@
   transition:
     border-color 200ms,
     background 200ms;
-  color: #000;
+  color: map.get(vars.$palette, text-primary);
   outline: none;
-  background: #fff;
-  &Default {
+  background: map.get(vars.$palette, background);
+  &.default {
     border: 1px solid map.get(vars.$palette, default);
     &:hover {
-      border-color: map.get(vars.$palette, secondary);
+      border-color: map.get(vars.$palette, border-hover);
     }
     &:focus {
       border-color: map.get(vars.$palette, primary);
       border-width: 2px;
     }
   }
-  &Error {
+  &.error {
     border: 1px solid map.get(vars.$palette, error);
     &:focus {
       border-width: 2px;
@@ -73,7 +73,7 @@
   padding-left: 14px;
   text-align: left;
 
-  &Error {
+  &.error {
     color: map.get(vars.$palette, error);
   }
 }

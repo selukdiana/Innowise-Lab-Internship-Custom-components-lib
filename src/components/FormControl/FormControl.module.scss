@@ -1,0 +1,9 @@
+.formControl {
+  position: relative;
+  margin-bottom: 16px;
+  height: 53px;
+  width: 160px;
+  &.fullWidth {
+    width: 100%;
+  }
+}

@@ -7,6 +7,7 @@ import { Select } from './components/Select';
 import { MenuItem } from './components/MenuItem/MenuItem';
 import { Checkbox } from './components/Checkbox';
 import { Switch } from './components/Switch';
+import { Modal } from './components/Modal';
 
 export {
   Button,
@@ -17,4 +18,5 @@ export {
   MenuItem,
   Checkbox,
   Switch,
+  Modal,
 };

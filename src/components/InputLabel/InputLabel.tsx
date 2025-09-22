@@ -1,19 +1,14 @@
-import React, { FC, HTMLAttributes, useContext } from 'react';
+import React, { FC, ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import styles from './InputLabel.module.scss';
 import { FormContext } from '../FormControl';
 
-export interface LabelProps extends HTMLAttributes<HTMLLabelElement> {
+export interface LabelProps {
   id: string;
-  children: string;
+  children: ReactNode;
 }
 
-export const InputLabel: FC<LabelProps> = ({
-  children,
-  id,
-  className,
-  ...rest
-}) => {
+export const InputLabel: FC<LabelProps> = ({ children, id }) => {
   const { isOpen, currentValue } = useContext(FormContext);
 
   const hasValue = currentValue !== undefined;
@@ -22,11 +17,10 @@ export const InputLabel: FC<LabelProps> = ({
     styles.label,
     (isOpen || hasValue) && styles.floated,
     isOpen && styles.focused,
-    className,
   );
 
   return (
-    <label className={labelClasses} id={id} {...rest}>
+    <label className={labelClasses} id={id}>
       {children}
     </label>
   );

@@ -2,8 +2,11 @@ import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Switch.module.scss';
 
-interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface SwitchProps {
   label?: string;
+  disabled?: boolean;
+  checked: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const Switch: React.FC<SwitchProps> = ({
@@ -11,7 +14,6 @@ export const Switch: React.FC<SwitchProps> = ({
   disabled = false,
   checked,
   onChange,
-  ...rest
 }) => {
   const [isChecked, setIsChecked] = useState(checked);
   const handleSwitchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +33,6 @@ export const Switch: React.FC<SwitchProps> = ({
           checked={isChecked}
           onChange={handleSwitchChange}
           className={styles.hiddenCheckbox}
-          {...rest}
         />
       </div>
       {label && <span className={styles.label}>{label}</span>}

@@ -1,9 +1,10 @@
-import React, { createContext, FC, HTMLAttributes, useState } from 'react';
+import React, { createContext, FC, ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import styles from './FormControl.module.scss';
 
-export interface FormControlProps extends HTMLAttributes<HTMLDivElement> {
+export interface FormControlProps {
   fullWidth?: boolean;
+  children?: ReactNode;
 }
 
 export interface FormContextType {
@@ -22,8 +23,7 @@ export const FormContext = createContext<FormContextType>({
 
 export const FormControl: FC<FormControlProps> = ({
   fullWidth,
-  children,
-  className,
+  children = null,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentValue, setCurrentValue] = useState(undefined);
@@ -31,7 +31,6 @@ export const FormControl: FC<FormControlProps> = ({
   const formControlClasses = classNames(
     styles.formControl,
     fullWidth && styles.fullWidth,
-    className,
   );
 
   return (

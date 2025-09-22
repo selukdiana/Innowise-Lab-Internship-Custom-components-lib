@@ -1,21 +1,15 @@
-import React, {
-  FC,
-  useRef,
-  ReactNode,
-  HTMLAttributes,
-  useContext,
-  useEffect,
-} from 'react';
+import React, { FC, useRef, ReactNode, useContext, useEffect } from 'react';
 import styles from './Select.module.scss';
 import { MenuItemProps, SelectChangeEvent } from '../MenuItem/MenuItem';
 import classNames from 'classnames';
 import { FormContext } from '../FormControl';
 
-export interface SelectProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface SelectProps {
   label?: string;
   value?: string;
-  children: ReactNode; // expect MenuItem elements
+  children: ReactNode;
+  id: string;
+  labelId: string;
   onChange?: (event: SelectChangeEvent) => void;
 }
 
@@ -29,7 +23,6 @@ export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
     setCurrentValue(value);
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -49,7 +42,6 @@ export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
   };
 
   let displayedLabel = '';
-  //   // Find the label of the selected MenuItem
   React.Children.forEach(children, (child) => {
     if (
       React.isValidElement(child) &&
@@ -61,10 +53,9 @@ export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
 
   const selectBoxClasses = classNames(
     styles.selectBox,
-    isOpen ? styles.selectBoxFocused : styles.selectBoxDefault,
+    isOpen ? styles.focused : styles.default,
   );
-
-  const arrowClasses = classNames(styles.arrow, isOpen && styles.arrowOpen);
+  const arrowClasses = classNames(styles.arrow, isOpen && styles.open);
 
   return (
     <div className={styles.root} ref={rootRef}>

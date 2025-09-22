@@ -3,39 +3,12 @@
 @use '../../variables' as vars;
 
 .root {
-  //   display: inline-flex;
-  //   flex-direction: column;
   height: 100%;
   position: relative;
   font-family: 'Roboto', sans-serif;
 }
 
-.label {
-  position: absolute;
-  top: 50%;
-  left: 14px;
-  transform: translateY(-50%);
-  background: map.get(vars.$palette, background);
-  font-size: 1rem;
-  pointer-events: none;
-  transition: all 200ms;
-  transform-origin: top left;
-  color: map.get(vars.$palette, text-secondary);
-  &Floated {
-    top: 0;
-    transform: scale(0.75) translateY(-50%);
-    font-size: 1rem;
-    line-height: 1.4375em;
-    padding: 0 3px;
-  }
-  &Focused {
-    color: map.get(vars.$palette, primary);
-  }
-}
-
 .selectBox {
-  //   height: 53px;
-  //   outline: none;
   height: 100%;
   display: flex;
   align-items: center;
@@ -49,28 +22,17 @@
   border-radius: vars.$border-radius;
   color: map.get(vars.$palette, text-primary);
   background: map.get(vars.$palette, background);
-  //   min-width: 160px;
-  &Default {
+  &.default {
     border: 1px solid map.get(vars.$palette, default);
     &:hover {
       border-color: map.get(vars.$palette, border-hover);
     }
   }
-  &Focused {
+  &.focused {
     border: 2px solid map.get(vars.$palette, primary);
   }
 }
 
-// .selectBox::after {
-//   content: '';
-//   width: 0;
-//   height: 0;
-//   border: 24px solid transparent;
-//   border-top-color: rgba(0, 0, 0, 0.54);
-//   position: absolute;
-//   top: 50%;
-//   right: 0;
-// }
 .arrow {
   width: 24px;
   height: 24px;
@@ -80,7 +42,7 @@
   transform: translateY(-50%);
   fill: map.get(vars.$palette, icon);
   transition: transform 0.2s ease;
-  &Open {
+  &.open {
     transform: rotate(180deg) translateY(50%);
   }
 }
@@ -97,8 +59,4 @@
   max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 4px 6px map.get(vars.$palette, shadow);
-}
-
-.activeMenuItem {
-  background-color: map.get(vars.$palette, active-bg);
 }

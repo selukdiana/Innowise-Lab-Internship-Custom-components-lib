@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use 'sass:color';
-@use '../../variables' as vars; // optional
+@use '../../variables' as vars;
 
 .root {
   display: inline-flex;
@@ -24,12 +24,16 @@
   transition: all 200ms;
   transform-origin: top left;
   color: map.get(vars.$palette, text-secondary);
+
   &.floated {
     top: 0;
     transform: scale(0.75) translateY(-50%);
     font-size: 1rem;
     line-height: 1.4375em;
     padding: 0 3px;
+  }
+
+  &.focused {
     color: map.get(vars.$palette, primary);
   }
 
@@ -48,6 +52,7 @@
   color: map.get(vars.$palette, text-primary);
   outline: none;
   background: map.get(vars.$palette, background);
+
   &.default {
     border: 1px solid map.get(vars.$palette, default);
     &:hover {
@@ -58,6 +63,7 @@
       border-width: 2px;
     }
   }
+
   &.error {
     border: 1px solid map.get(vars.$palette, error);
     &:focus {

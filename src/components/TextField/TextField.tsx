@@ -36,6 +36,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   const labelClasses = classNames(
     styles.label,
     (hasValue || isFocused) && styles.floated,
+    isFocused && styles.ficused,
     error && styles.error,
   );
   const inputClasses = classNames(

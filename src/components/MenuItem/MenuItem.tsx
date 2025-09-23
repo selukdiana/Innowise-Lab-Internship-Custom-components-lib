@@ -5,14 +5,14 @@ import classNames from 'classnames';
 import { FormContext } from '../FormControl';
 
 export interface MenuItemProps extends HTMLAttributes<HTMLLIElement> {
-  value: string;
+  value: string | number;
   changeHandler?: (event: SelectChangeEvent) => void;
   isActive?: boolean;
 }
 
 export type SelectChangeEvent = {
   target: {
-    value: string;
+    value: string | number;
   };
 };
 

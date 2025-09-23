@@ -6,7 +6,7 @@ import { FormContext } from '../FormControl';
 
 export interface SelectProps {
   label?: string;
-  value?: string;
+  value?: string | number;
   children: ReactNode;
   id: string;
   labelId: string;

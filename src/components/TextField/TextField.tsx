@@ -55,6 +55,7 @@ export const TextField: React.FC<TextFieldProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleInputChange}
+          value={inputValue}
           {...rest}
         />
       </div>

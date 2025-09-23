@@ -32,24 +32,33 @@
   align-items: center;
   justify-content: center;
   border: 2px solid;
+
+  &.disabled {
+    &:hover {
+      cursor: default;
+    }
+  }
+
   &.default {
     background: map.get(vars.$palette, background);
     border-color: map.get(vars.$palette, border-disabled);
+
     &.disabled {
-      pointer-events: none;
       background: map.get(vars.$palette, background);
       border-color: map.get(vars.$palette, disabled-text);
     }
   }
+
   &.checked {
     background-color: map-get(vars.$palette, primary);
     border-color: map-get(vars.$palette, primary);
+
     &.disabled {
-      pointer-events: none;
       border-color: map.get(vars.$palette, disabled-text);
       background-color: map.get(vars.$palette, disabled-text);
     }
   }
+
   &:hover:not(.disabled) {
     border-color: map-get(vars.$palette, primary);
   }

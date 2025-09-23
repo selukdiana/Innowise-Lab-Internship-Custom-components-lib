@@ -10,8 +10,10 @@ export interface FormControlProps {
 export interface FormContextType {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  currentValue: string | undefined;
-  setCurrentValue: React.Dispatch<React.SetStateAction<string | undefined>>;
+  currentValue: string | number | undefined;
+  setCurrentValue: React.Dispatch<
+    React.SetStateAction<string | number | undefined>
+  >;
 }
 
 export const FormContext = createContext<FormContextType>({
@@ -41,7 +43,7 @@ export const FormControl: FC<FormControlProps> = ({
           setIsOpen,
           currentValue,
           setCurrentValue: setCurrentValue as React.Dispatch<
-            React.SetStateAction<string | undefined>
+            React.SetStateAction<string | number | undefined>
           >,
         }}
       >

@@ -9,7 +9,7 @@ interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Checkbox: React.FC<CheckboxProps> = ({
   label,
   disabled = false,
-  checked,
+  checked = false,
   onChange,
   ...rest
 }) => {

@@ -48,7 +48,11 @@ export const TextField: React.FC<TextFieldProps> = ({
   return (
     <div className={rootClasses}>
       <div className={styles.inputContainer}>
-        {label && <label className={labelClasses}>{label}</label>}
+        {label && (
+          <label className={labelClasses} id="label">
+            {label}
+          </label>
+        )}
         <input
           className={inputClasses}
           aria-invalid={error}
@@ -56,6 +60,7 @@ export const TextField: React.FC<TextFieldProps> = ({
           onBlur={handleBlur}
           onChange={handleInputChange}
           value={inputValue}
+          aria-labelledby="label"
           {...rest}
         />
       </div>

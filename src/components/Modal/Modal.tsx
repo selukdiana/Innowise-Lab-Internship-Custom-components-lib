@@ -25,7 +25,7 @@ export const Modal: React.FC<ModalProps> = ({
   }, [open]);
 
   return !open ? null : (
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} onClick={onClose} role="dialog">
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.content}>{children}</div>
       </div>

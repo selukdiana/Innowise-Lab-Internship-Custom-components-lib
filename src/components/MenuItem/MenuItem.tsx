@@ -21,7 +21,7 @@ export const MenuItem: FC<MenuItemProps> = ({
   children,
   changeHandler,
   onClick,
-  isActive,
+  isActive = false,
 }) => {
   const { setIsOpen, setCurrentValue } = useContext(FormContext);
 

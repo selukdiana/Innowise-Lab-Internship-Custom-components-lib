@@ -15,7 +15,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   const [isChecked, setIsChecked] = useState(checked);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (disabled) return;
     setIsChecked((prev) => !prev);
     onChange?.(e);
   };

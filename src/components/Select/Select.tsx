@@ -13,7 +13,13 @@ export interface SelectProps {
   onChange?: (event: SelectChangeEvent) => void;
 }
 
-export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
+export const Select: FC<SelectProps> = ({
+  value,
+  children,
+  onChange,
+  labelId,
+  id,
+}) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const { isOpen, setIsOpen, currentValue, setCurrentValue } =
     useContext(FormContext);
@@ -21,7 +27,7 @@ export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
 
   useEffect(() => {
     setCurrentValue(value);
-  }, []);
+  }, [value]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -59,7 +65,12 @@ export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
 
   return (
     <div className={styles.root} ref={rootRef}>
-      <div className={selectBoxClasses} onClick={toggleOpen}>
+      <button
+        className={selectBoxClasses}
+        onClick={toggleOpen}
+        aria-labelledby={labelId}
+        id={id}
+      >
         {hasValue && <span>{displayedLabel}</span>}
         <svg
           className={arrowClasses}
@@ -69,7 +80,7 @@ export const Select: FC<SelectProps> = ({ value, children, onChange }) => {
         >
           <path d="M7 10l5 5 5-5z"></path>
         </svg>
-      </div>
+      </button>
       {isOpen && (
         <ul className={styles.menu}>
           {React.Children.map(children, (child, index) => {

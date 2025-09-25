@@ -33,6 +33,7 @@ export const Switch: React.FC<SwitchProps> = ({
           checked={isChecked}
           onChange={handleSwitchChange}
           className={styles.hiddenCheckbox}
+          disabled={disabled}
         />
       </div>
       {label && <span className={styles.label}>{label}</span>}

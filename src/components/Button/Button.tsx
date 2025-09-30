@@ -1,10 +1,13 @@
 import React, { ButtonHTMLAttributes, FC } from 'react';
 import classNames from 'classnames';
+
 import styles from './Button.module.scss';
 
+export type VariantType = 'text' | 'outlined' | 'contained';
+export type SizeType = 'small' | 'medium' | 'large';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'text' | 'outlined' | 'contained';
-  size?: 'small' | 'medium' | 'large';
+  variant?: VariantType;
+  size?: SizeType;
 }
 
 export const Button: FC<ButtonProps> = ({

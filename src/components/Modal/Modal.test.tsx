@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+
 import { Modal } from './Modal';
 
 describe('Modal Component', () => {
@@ -29,7 +30,7 @@ describe('Modal Component', () => {
         Modal Content
       </Modal>,
     );
-    fireEvent.click(screen.getByText('Modal Content')); // Prevents close
+    fireEvent.click(screen.getByText('Modal Content'));
     fireEvent.click(screen.getByRole('dialog'));
     expect(mockClose).toHaveBeenCalledTimes(1);
   });
@@ -40,7 +41,7 @@ describe('Modal Component', () => {
         Modal Content
       </Modal>,
     );
-    fireEvent.click(screen.getByText('Modal Content')); // Prevents close
+    fireEvent.click(screen.getByText('Modal Content')); 
     expect(mockClose).not.toHaveBeenCalled();
   });
 });

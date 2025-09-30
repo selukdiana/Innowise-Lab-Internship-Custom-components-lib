@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { Modal } from './Modal';
 import React from 'react';
+
+import { Modal } from './Modal';
 
 const meta: Meta<typeof Modal> = {
   title: 'Modal',

@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { FormControl } from '../FormControl'; // ensure correct import
+
+import { FormControl } from '../FormControl';
 import { Select } from './Select';
-import { MenuItem } from '../MenuItem'; // ensure correct import
+import { MenuItem } from '../MenuItem';
 import { InputLabel } from '../InputLabel';
 
 describe('Select Component', () => {

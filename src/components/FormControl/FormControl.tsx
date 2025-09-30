@@ -1,5 +1,13 @@
-import React, { createContext, FC, ReactNode, useState } from 'react';
+import React, {
+  createContext,
+  FC,
+  ReactNode,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import classNames from 'classnames';
+
 import styles from './FormControl.module.scss';
 
 export interface FormControlProps {
@@ -9,11 +17,9 @@ export interface FormControlProps {
 
 export interface FormContextType {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
   currentValue: string | number | undefined;
-  setCurrentValue: React.Dispatch<
-    React.SetStateAction<string | number | undefined>
-  >;
+  setCurrentValue: Dispatch<SetStateAction<string | number | undefined>>;
 }
 
 export const FormContext = createContext<FormContextType>({
@@ -23,12 +29,11 @@ export const FormContext = createContext<FormContextType>({
   setCurrentValue: () => {},
 });
 
-export const FormControl: FC<FormControlProps> = ({
-  fullWidth,
-  children = null,
-}) => {
+export const FormControl: FC<FormControlProps> = ({ fullWidth, children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentValue, setCurrentValue] = useState(undefined);
+  const [currentValue, setCurrentValue] = useState<undefined | string | number>(
+    undefined,
+  );
 
   const formControlClasses = classNames(
     styles.formControl,
@@ -42,9 +47,7 @@ export const FormControl: FC<FormControlProps> = ({
           isOpen,
           setIsOpen,
           currentValue,
-          setCurrentValue: setCurrentValue as React.Dispatch<
-            React.SetStateAction<string | number | undefined>
-          >,
+          setCurrentValue,
         }}
       >
         {children}

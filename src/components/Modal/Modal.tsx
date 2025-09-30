@@ -1,4 +1,6 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { FC, ReactNode, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -7,11 +9,7 @@ interface ModalProps {
   children?: ReactNode;
 }
 
-export const Modal: React.FC<ModalProps> = ({
-  open,
-  onClose,
-  children = null,
-}) => {
+export const Modal: FC<ModalProps> = ({ open, onClose, children }) => {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
@@ -24,11 +22,14 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, [open]);
 
-  return !open ? null : (
-    <div className={styles.overlay} onClick={onClose} role="dialog">
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.content}>{children}</div>
-      </div>
-    </div>
-  );
+  return !open
+    ? null
+    : createPortal(
+        <div className={styles.overlay} onClick={onClose} role="dialog">
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.content}>{children}</div>
+          </div>
+        </div>,
+        document.body,
+      );
 };

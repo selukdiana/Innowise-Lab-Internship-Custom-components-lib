@@ -1,12 +1,13 @@
-import React, { ChangeEvent, useState } from 'react';
-import styles from './Checkbox.module.scss';
+import React, { ChangeEvent, FC, InputHTMLAttributes, useState } from 'react';
 import classNames from 'classnames';
 
-interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+import styles from './Checkbox.module.scss';
+
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox: FC<CheckboxProps> = ({
   label,
   disabled = false,
   checked = false,

@@ -1,7 +1,7 @@
-import { FC, HTMLAttributes, useContext } from 'react';
-import styles from './MenuItem.module.scss';
-import React from 'react';
+import React, { FC, HTMLAttributes, useContext, MouseEvent } from 'react';
 import classNames from 'classnames';
+
+import styles from './MenuItem.module.scss';
 import { FormContext } from '../FormControl';
 
 export interface MenuItemProps extends HTMLAttributes<HTMLLIElement> {
@@ -30,7 +30,7 @@ export const MenuItem: FC<MenuItemProps> = ({
     isActive && styles.active,
   );
 
-  const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
+  const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     setCurrentValue(value);
     setIsOpen(false);
     changeHandler?.({ target: { value } });

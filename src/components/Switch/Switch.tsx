@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import classNames from 'classnames';
+
 import styles from './Switch.module.scss';
 
 interface SwitchProps {

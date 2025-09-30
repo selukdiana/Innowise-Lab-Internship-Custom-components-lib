@@ -1,5 +1,6 @@
 import React, { FC, ReactNode, useContext } from 'react';
 import classNames from 'classnames';
+
 import styles from './InputLabel.module.scss';
 import { FormContext } from '../FormControl';
 

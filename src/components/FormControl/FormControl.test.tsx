@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+
 import { FormControl } from './FormControl';
 
 describe('FormControl Component', () => {
@@ -20,6 +21,6 @@ describe('FormControl Component', () => {
       </FormControl>,
     );
 
-    expect(container.firstChild).toHaveClass('fullWidth'); // Ensure the class is applied
+    expect(container.firstChild).toHaveClass('fullWidth');
   });
 });

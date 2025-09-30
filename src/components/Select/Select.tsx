@@ -1,13 +1,14 @@
-import React, { FC, useRef, ReactNode, useContext, useEffect } from 'react';
+import React, { FC, useRef, useContext, useEffect, ReactElement } from 'react';
+import classNames from 'classnames';
+
 import styles from './Select.module.scss';
 import { MenuItemProps, SelectChangeEvent } from '../MenuItem/MenuItem';
-import classNames from 'classnames';
 import { FormContext } from '../FormControl';
 
 export interface SelectProps {
   label?: string;
   value?: string | number;
-  children: ReactNode;
+  children: ReactElement<MenuItemProps>[];
   id: string;
   labelId: string;
   onChange?: (event: SelectChangeEvent) => void;
@@ -24,11 +25,21 @@ export const Select: FC<SelectProps> = ({
   const { isOpen, setIsOpen, currentValue, setCurrentValue } =
     useContext(FormContext);
   const hasValue = currentValue !== undefined;
+  let displayedLabel = '';
+
+  children.forEach((child) => {
+    if (child.props.value === currentValue) {
+      displayedLabel = child.props.children as string;
+    }
+  });
+
+  const toggleOpen = () => {
+    setIsOpen?.((prev) => !prev);
+  };
 
   useEffect(() => {
     setCurrentValue(value);
   }, [value]);
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -42,20 +53,6 @@ export const Select: FC<SelectProps> = ({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
-
-  const toggleOpen = () => {
-    setIsOpen?.((prev) => !prev);
-  };
-
-  let displayedLabel = '';
-  React.Children.forEach(children, (child) => {
-    if (
-      React.isValidElement(child) &&
-      (child.props as MenuItemProps).value === currentValue
-    ) {
-      displayedLabel = child.props.children as string;
-    }
-  });
 
   const selectBoxClasses = classNames(
     styles.selectBox,
@@ -83,20 +80,15 @@ export const Select: FC<SelectProps> = ({
       </button>
       {isOpen && (
         <ul className={styles.menu}>
-          {React.Children.map(children, (child, index) => {
-            if (!React.isValidElement(child)) return child;
-
-            const props = child.props as MenuItemProps;
+          {children.map((child, index) => {
+            const props = child.props;
             const isActive = props.value === currentValue;
-            return React.cloneElement(
-              child as React.ReactElement<MenuItemProps>,
-              {
-                ...props,
-                changeHandler: onChange,
-                isActive,
-                tabIndex: index,
-              },
-            );
+            return React.cloneElement(child, {
+              ...props,
+              changeHandler: onChange,
+              isActive,
+              tabIndex: index,
+            });
           })}
         </ul>
       )}

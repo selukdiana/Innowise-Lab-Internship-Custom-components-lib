@@ -21,14 +21,14 @@ npm install custom-components-lib-ds
 ### 2. Import Components
 
 ```
-import { Button, Checkbox, Modal, FormControl, InputLabel, Select, MenuItem }from 'your-library-name';
+import { Button, Checkbox, Modal, FormControl, InputLabel, Select, MenuItem }from 'custom-components-lib-ds';
 ```
 
 ### 3. Example Usage
 
 ```
 import React, { useState } from 'react';
-import { Button, Modal, FormControl, InputLabel, Select, MenuItem } from 'your-library-name';
+import { Button, Modal, FormControl, InputLabel, Select, MenuItem } from 'custom-components-lib-ds';
 
 const App = () => {
   const [age, setAge] = useState('');
@@ -60,7 +60,7 @@ const App = () => {
 export default App;
 ```
 
-### 4. Runninh the App
+### 4. Running the App
 
 After setting up your components, make sure you have a running React application. You can typically do this by using:
 
